@@ -7,6 +7,7 @@ package listener;
 import controler.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,17 +30,19 @@ public class EncryptListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
+            //encryption chaine
             String words;
             words = parent.getRootPane().getDecryptBox().getDecryptText().getText();
-            words = parent.encrypt(words);
             
-            //char sens;
-            //sens = 'd';
-            //parent.getWorkingRotor().decaleLigneEntree(sens, 1);
-            //parent.getWorkingRotor().decaleLigneSortie(sens, 1);
+            if(words.equals("")){
+                throw new Exception("le texte a encrypter est vide !");
+            }
+            words = parent.encrypt(words);
             parent.getRootPane().getEncryptBox().getEncrypText().setText(words);
+            
+            //decalage du rotor
         }catch(Exception ex){
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(this.parent.getRootPane(), ex.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
     /*

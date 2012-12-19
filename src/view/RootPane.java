@@ -43,22 +43,22 @@ public class RootPane extends JFrame{
         label = new JLabel("Rotor3");
         this.add(label);
         
-        table = new JTable( new RotorView(Conf.rotor3Entree, Conf.rotor3Sortie, this));
-        this.add(table);
+        this.tableR3 = new JTable( new RotorView(Conf.rotor3Entree, Conf.rotor3Sortie, this));
+        this.add(this.tableR3);
         
         //rotor 2 label + tableau
         label = new JLabel("Rotor2");
         this.add(label);
         
-        table = new JTable( new RotorView(Conf.rotor2Entree, Conf.rotor2Sortie, this));
-        this.add(table);
+        this.tableR2 = new JTable( new RotorView(Conf.rotor2Entree, Conf.rotor2Sortie, this));
+        this.add(this.tableR2);
         
         //rotor 1 label + tableau
         label = new JLabel("Rotor1");
         this.add(label);
         
-        table = new JTable( new RotorView(Conf.rotor1Entree, Conf.rotor1Sortie, this));
-        this.add(table);
+        this.tableR1 = new JTable( new RotorView(Conf.rotor1Entree, Conf.rotor1Sortie, this));
+        this.add(this.tableR1);
         
         //boite de configuration
         this.confbox = new ConfBox(this);

@@ -16,7 +16,7 @@ public class ActionBox extends JPanel{
     /*
      * 
      */
-    private JButton encrypter, next_step, decrypter;
+    private JButton encrypter, next_step, decrypter, configurer;
     private RootPane parent;
     /*
      * 
@@ -26,10 +26,14 @@ public class ActionBox extends JPanel{
         this.encrypter = new JButton("encrypter");
         this.decrypter = new JButton("décrypter");
         this.next_step = new JButton("étape suivante");
+        this.configurer = new JButton("configurer la clé");
         
         this.encrypter.addActionListener(new EncryptListener(parent.getMyParent()));
         this.decrypter.addActionListener(new DecryptListener(parent.getMyParent()));
+        this.configurer.addActionListener(new ConfListener(parent.getMyParent()));
+        this.next_step.addActionListener(new NextStepListener(parent.getMyParent()));
         
+        this.add(this.configurer);
         this.add(this.encrypter);
         this.add(this.decrypter);
         this.add(this.next_step);

@@ -86,4 +86,16 @@ public class RotorView extends AbstractTableModel{
     public int[] getRotorConfSortie(){
         return this.rotorConfSortie;
     }
+    /*
+     * 
+     */
+    public void SetRotorConfEntree(int[] rotorConf){
+        this.rotorConfEntree = rotorConf;
+    }
+    /*
+     * 
+     */
+    public void setRotorConfSortie(int[] rotorConf){
+        this.rotorConfSortie = rotorConf;
+    }
 }

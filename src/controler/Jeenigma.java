@@ -5,8 +5,8 @@
 package controler;
 
 import conf.*;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import listener.ConfListener;
 import view.*;
 
 /**
@@ -25,13 +25,13 @@ public class Jeenigma {
      * 
      */
     public Jeenigma(){
-        this.rotor1 = new Rotor(Conf.rotor1Entree, Conf.rotor1Sortie);
-        this.rotor2 = new Rotor(Conf.rotor2Entree, Conf.rotor2Sortie);
-        this.rotor3 = new Rotor(Conf.rotor3Entree, Conf.rotor3Sortie);
-        this.reflecteur = new Reflecteur(Conf.reflecteur);
-        this.workingRotor = this.rotor1;
-        this.rootPane = new RootPane(this);
         this.conf = new Conf();
+        this.rotor1 = new Rotor(1,'D', 0, 1, Conf.rotor1Entree, Conf.rotor1Sortie);
+        this.rotor2 = new Rotor(2,'D', 0, 2, Conf.rotor2Entree, Conf.rotor2Sortie);
+        this.rotor3 = new Rotor(3,'D', 0, 3, Conf.rotor3Entree, Conf.rotor3Sortie);
+        this.reflecteur = new Reflecteur(Conf.reflecteur);
+        this.initWorkingRotor();
+        this.rootPane = new RootPane(this);
     }
     /*
      * 
@@ -89,20 +89,22 @@ public class Jeenigma {
             //décalage rotor3 en sortie
             next_position = this.decalageSortie(this.rotor3, next_position);
             
-            //décalage roto2 en sortie
+            //décalage rotor2 en sortie
             next_position = this.decalageSortie(this.rotor2, next_position);
             
-            //décalage roto1 en sortie
+            //décalage rotor1 en sortie
             next_position = this.decalageSortie(this.rotor1, next_position);
             
             encrypted_letter = Tools.getCharByPosition(next_position);
             
-            //decalage du rotor travaillant
-            this.workingRotor.decaleLigneEntree(this.conf.getCurrentSensRotation(), 1);
-            this.workingRotor.decaleLigneSortie(this.conf.getCurrentSensRotation(), 1);
+            //a un tour complet de rotor, il faut passer au suivant
+            if(this.workingRotor.afaitUnTour()){
+                this.workingRotor.setCompteDecalage(0);
+                this.setNextWorkingRotor();
+            }
         }
         catch(Exception e){
-            System.out.println(e.getMessage().toString());
+            JOptionPane.showMessageDialog(this.getRootPane(), e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
             encrypted_letter = ' ';
         }
         return encrypted_letter;
@@ -125,7 +127,7 @@ public class Jeenigma {
                 }
             }
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this.getRootPane(), e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
         }
         return encrypted_string;   
     }
@@ -192,6 +194,45 @@ public class Jeenigma {
     /*
      * 
      */
+    private void initWorkingRotor(){
+        switch(1){
+            case 1:
+                this.workingRotor = this.rotor1;
+            break;
+            case 2:
+                this.workingRotor = this.rotor2;
+            break;
+            case 3:
+                this.workingRotor = this.rotor3;
+            break;
+        }
+    }
+    /*
+     * 
+     */
+    public void setNextWorkingRotor() throws Exception{
+        if(1 == -1){
+            throw new Exception("Impossible de déterminer le rotor suivant");
+        }
+        
+        int nextRotorNumber = 1;
+        
+        switch(nextRotorNumber){
+            case 1:
+                this.setWorkingRotor(rotor1);
+            break;
+            case 2:
+                this.setWorkingRotor(rotor2);
+            break;
+            case 3:
+                this.setWorkingRotor(rotor3);
+                
+            break;
+        }
+    }
+    /*
+     * 
+     */
     public static void main(String[] args) {
         try{
             SwingUtilities.invokeLater(new Runnable(){
@@ -200,7 +241,6 @@ public class Jeenigma {
                     Jeenigma enigma = new Jeenigma();
                 }
             });
-            
         }
         catch(Exception e){
             System.out.println(e.getMessage());

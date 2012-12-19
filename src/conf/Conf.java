@@ -58,155 +58,22 @@ public class Conf {
     public static final int text_zone_rows = 2;
     public static final int text_zone_cols = 80;
     public static final Object[] decalage_possible = {
-            -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10,
-            -9, -8, -7, -6, -5, -4, -3, -2, -1,
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+            -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1,
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
     };
-    public static final char defaultSensRotationRotor = 'D';
-    public static final int defaultDecalageRotor = 0;
+    public static final char sensRotationRotorDefaut = 'D';
+    public static final int decalageRotorDefaut = 0;
     /*
      * FIN CONSTANTES
      */
-    private int decalageRotor1, decalageRotor2, decalageRotor3;
-    private int ordreRotor1, ordreRotor2, ordreRotor3;
-    private char sensRotor1, sensRotor2, sensRotor3;
-    private char currentSensRotation;
     /*
      * 
      */
     public Conf(){
-        this.decalageRotor1 = 0;
-        this.decalageRotor2 = 0;
-        this.decalageRotor3 = 0;
-        
-        this.ordreRotor1 = 1;
-        this.ordreRotor2 = 2;
-        this.ordreRotor3 = 3;
-        
-        this.sensRotor1 = Conf.defaultSensRotationRotor;
-        this.sensRotor2 = Conf.defaultSensRotationRotor;        
-        this.sensRotor3 = Conf.defaultSensRotationRotor;
-        
-        this.currentSensRotation = Conf.defaultSensRotationRotor;
+       
     }
     /*
      * 
      */
-    public int getDecalageRotor1(){
-        return this.decalageRotor1;
-    }
-    /*
-     * 
-     */
-    public int getDecalageRotor2(){
-        return this.decalageRotor2;
-    }
-    /*
-     * 
-     */
-    public int getDecalageRotor3(){
-        return this.decalageRotor3;
-    }
-    /*
-     * 
-     */
-    public void setDecalageRotor1(int decalage){
-        this.decalageRotor1 = decalage;
-    }
-    /*
-     * 
-     */
-    public void setDecalageRotor2(int decalage){
-        this.decalageRotor2 = decalage;
-    }
-    /*
-     * 
-     */
-    public void setDecalageRotor3(int decalage){
-        this.decalageRotor3 = decalage;
-    }
-    /*
-     * 
-     */
-    public int getOrdreRotor1(){
-        return this.ordreRotor1;
-    }
-    /*
-     * 
-     */
-    public int getOrdreRotor2(){
-        return this.ordreRotor2;
-    }
-    /*
-     * 
-     */
-    public int getOrdreRotor3(){
-        return this.ordreRotor3;
-    }
-    /*
-     * 
-     */
-    public void setOrdreRotor1(int ordre){
-        this.ordreRotor1 = ordre;
-    }
-    /*
-     * 
-     */
-    public void setOrdreRotor2(int ordre){
-        this.ordreRotor2 = ordre;
-    }
-    /*
-     * 
-     */
-    public void setOrdreRotor3(int ordre){
-        this.ordreRotor3 = ordre;
-    }
-    /*
-     * 
-     */
-    public char getCurrentSensRotation(){
-        return this.currentSensRotation;
-    }
-    /*
-     * 
-     */
-    public void setCurrentSensRotation(char sens){
-        this.currentSensRotation = sens;
-    }
-    /*
-     * 
-     */
-    public char getSensRotor1(){
-        return this.sensRotor1;
-    }
-    /*
-     * 
-     */
-    public char getSensRotor2(){
-        return this.sensRotor2;
-    }
-    /*
-     * 
-     */
-    public char getSensRotor3(){
-        return this.sensRotor3;
-    }
-    /*
-     * 
-     */
-    public void setSensRotor1(char sens){
-        this.sensRotor1 = sens;
-    }
-    /*
-     * 
-     */
-    public void setSensRotor2(char sens){
-        this.sensRotor2 = sens;
-    }
-    /*
-     * 
-     */
-    public void setSensRotor3(char sens){
-        this.sensRotor3 = sens;
-    }
+    
 }

@@ -4,6 +4,7 @@
  */
 package controler;
 
+import conf.Conf;
 import javax.management.InvalidAttributeValueException;
 
 /**
@@ -14,14 +15,24 @@ public class Rotor {
     /*
      * 
      */
+    private int numRotor;
+    private int compteDecalage;
     private int[] ligneEntree;
     private int[] ligneSortie;
+    private int decalageInitial;
+    private int ordreDecalage;
+    private char sensDecalage;
     /*
      * 
      */
-    public Rotor(int[] confEntree, int[] confSortie){
+    public Rotor(int numRotor, char sensDecalage, int decalageInitial, int ordreDecalage, int[] confEntree, int[] confSortie){
         this.ligneEntree = confEntree;
         this.ligneSortie = confSortie;
+        this.compteDecalage = 0;
+        this.numRotor = numRotor;
+        this.decalageInitial = decalageInitial;
+        this.ordreDecalage = ordreDecalage;
+        this.sensDecalage = sensDecalage;
     }
     /*
      * 
@@ -74,8 +85,62 @@ public class Rotor {
     /*
      * 
      */
-    public void decaleLigneEntree(char sens, int decalage ) throws InvalidAttributeValueException{
-        switch( Character.toUpperCase(sens) ){
+    public int getCompteDecalage(){
+        return this.compteDecalage;
+    }
+    /*
+     * 
+     */
+    public void setCompteDecalage(int decalage){
+        this.compteDecalage = decalage;
+    }
+    /*
+     * 
+     */
+    public int getRotorNumber(){
+        return this.numRotor;
+    }
+    /*
+     * 
+     */
+    public void setRotorNumber(int numRotor){
+        this.numRotor = numRotor;
+    }
+    /*
+     * 
+     */
+    public int getDecalageInitial(){
+        return this.decalageInitial;
+    }
+    /*
+     * 
+     */
+    public void setDecalageInitial(int decalage){
+        this.decalageInitial = decalage;
+    }
+    /*
+     * 
+     */
+    public int getOrdreDecalage(){
+        return this.ordreDecalage;
+    }
+    /*
+     * 
+     */
+    public void setOrdreDecalage(int ordreDecalage){
+        this.ordreDecalage = ordreDecalage;
+    }
+    /*
+     * 
+     */
+    public boolean afaitUnTour(){
+        return this.compteDecalage >= Conf.reflecteur.length;
+    }
+    /*
+     * 
+     */
+    public void decaleLigneEntree(int decalage ) throws InvalidAttributeValueException{
+        switch( Character.toUpperCase(this.sensDecalage) ){
             case 'G':
                 this.ligneEntree = Tools.decaleGauche(decalage, this.ligneEntree);
             break;
@@ -91,8 +156,8 @@ public class Rotor {
     /*
      * 
      */
-    public void decaleLigneSortie(char sens, int decalage ) throws InvalidAttributeValueException{
-        switch( Character.toUpperCase(sens) ){
+    public void decaleLigneSortie(int decalage) throws InvalidAttributeValueException{
+        switch( Character.toUpperCase(this.sensDecalage) ){
             case 'G':
                 this.ligneSortie = Tools.decaleGauche(decalage, this.ligneSortie);
             break;
@@ -108,8 +173,8 @@ public class Rotor {
     /*
      * 
      */
-    public void initRotor(char sens, int decalage) throws InvalidAttributeValueException{
-        switch( Character.toUpperCase(sens) ){
+    public void initRotor(int decalage) throws InvalidAttributeValueException{
+        switch( Character.toUpperCase(this.sensDecalage) ){
             case 'G':
                 this.ligneEntree = Tools.decaleGauche(decalage, this.ligneEntree);
                 this.ligneSortie = Tools.decaleGauche(decalage, this.ligneSortie);
@@ -123,5 +188,19 @@ public class Rotor {
             default:
                 throw new InvalidAttributeValueException("seul g et d sont des paramètres valides");
         }
+    }
+    /*
+     * 
+     */
+    public void decaleRotor(int decalage) throws InvalidAttributeValueException{
+        this.initRotor(decalage);
+    }
+    /*
+     * 
+     */
+    public void setConf(int decalageInitial, int ordreDecalage, char sensDecalage){
+        this.decalageInitial = decalageInitial;
+        this.ordreDecalage = ordreDecalage;
+        this.sensDecalage = sensDecalage;
     }
 }

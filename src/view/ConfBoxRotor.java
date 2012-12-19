@@ -13,8 +13,8 @@ import javax.swing.JPanel;
  *
  * @author jee
  */
-class ConfRotorBox extends JPanel{
-    /*
+public class ConfBoxRotor extends JPanel{
+   /*
     * 
     */
     private ConfBox parent;
@@ -22,7 +22,7 @@ class ConfRotorBox extends JPanel{
     /*
      * 
      */
-    public ConfRotorBox(ConfBox parent, int rotorNumber ){
+    public ConfBoxRotor(ConfBox parent, int rotorNumber ){
         super();
         this.parent = parent;
         this.add(new JLabel("Rotor "+rotorNumber));
@@ -43,6 +43,8 @@ class ConfRotorBox extends JPanel{
         this.sensDecalage = new JComboBox(sens_possible);
         this.sensDecalage.setSelectedItem(Conf.sensRotationRotorDefaut);
         this.add(this.sensDecalage);
+        
+        this.setVisible(true);
     }
     /*
      * 
