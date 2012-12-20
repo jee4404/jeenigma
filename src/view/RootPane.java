@@ -126,4 +126,22 @@ public class RootPane extends JFrame{
     public Jeenigma getMyParent(){
         return this.parent;
     }
+    /*
+     * 
+     */
+    public void setTableR1(RotorView rotorView){
+        this.tableR1 = new JTable(rotorView);
+    }
+    /*
+     * 
+     */
+    public void setTableR2(RotorView rotorView){
+        this.tableR2 = new JTable(rotorView);
+    }
+    /*
+     * 
+     */
+    public void setTableR3(RotorView rotorView){
+        this.tableR3 = new JTable(rotorView);
+    }
 }

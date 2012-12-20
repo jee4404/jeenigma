@@ -37,7 +37,7 @@ public class Rotor {
     /*
      * 
      */
-    public int[] ligneEntree(){
+    public int[] getLigneEntree(){
         return this.ligneEntree;
     }
     /*
@@ -49,7 +49,7 @@ public class Rotor {
     /*
      * 
      */
-    public int[] ligneSortie(){
+    public int[] getLigneSortie(){
         return this.ligneSortie;
     }
     /*
@@ -205,9 +205,5 @@ public class Rotor {
         this.decalageInitial = decalageInitial;
         this.ordreDecalage = ordreDecalage;
         this.sensDecalage = sensDecalage;
-        System.out.println("rotor"+this.getRotorNumber()+" : configuration : " );
-        System.out.println("decalage initial : "+this.decalageInitial);
-        System.out.print(" ordre decalage : "+this.ordreDecalage);
-        System.out.println(" sens decalage : "+this.sensDecalage);
     }
 }

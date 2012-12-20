@@ -102,7 +102,7 @@ public class Jeenigma {
             this.getWorkingRotor().decaleRotor(1, true);
             //a un tour complet de rotor, il faut passer au suivant
             if(this.getWorkingRotor().afaitUnTour()){
-                System.out.println("26eme coup de decalage !");
+                
                 this.getWorkingRotor().setCompteDecalage(0);
                 this.setNextWorkingRotor();
             }
