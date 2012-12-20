@@ -6,7 +6,6 @@ package controler;
 
 import conf.*;
 import javax.management.InvalidAttributeValueException;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import view.*;
 
@@ -108,7 +107,7 @@ public class Jeenigma {
             }
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this.getRootPane(), e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
             encrypted_letter = ' ';
         }
         return encrypted_letter;
@@ -131,7 +130,7 @@ public class Jeenigma {
                 }
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this.getRootPane(), e.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
         }
         return encrypted_string;   
     }
