@@ -173,7 +173,13 @@ public class Rotor {
     /*
      * 
      */
-    public void initRotor(int decalage) throws InvalidAttributeValueException{
+    public void initRotor() throws InvalidAttributeValueException{
+        this.decaleRotor(this.decalageInitial, false);
+    }
+    /*
+     * 
+     */
+    public void decaleRotor(int decalage, boolean compteDecalage) throws InvalidAttributeValueException{
         switch( Character.toUpperCase(this.sensDecalage) ){
             case 'G':
                 this.ligneEntree = Tools.decaleGauche(decalage, this.ligneEntree);
@@ -188,12 +194,9 @@ public class Rotor {
             default:
                 throw new InvalidAttributeValueException("seul g et d sont des paramètres valides");
         }
-    }
-    /*
-     * 
-     */
-    public void decaleRotor(int decalage) throws InvalidAttributeValueException{
-        this.initRotor(decalage);
+        if(compteDecalage){
+            this.compteDecalage = this.compteDecalage+1;
+        }
     }
     /*
      * 
@@ -202,5 +205,9 @@ public class Rotor {
         this.decalageInitial = decalageInitial;
         this.ordreDecalage = ordreDecalage;
         this.sensDecalage = sensDecalage;
+        System.out.println("rotor"+this.getRotorNumber()+" : configuration : " );
+        System.out.println("decalage initial : "+this.decalageInitial);
+        System.out.print(" ordre decalage : "+this.ordreDecalage);
+        System.out.println(" sens decalage : "+this.sensDecalage);
     }
 }

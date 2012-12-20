@@ -5,6 +5,7 @@
 package controler;
 
 import conf.*;
+import javax.management.InvalidAttributeValueException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import view.*;
@@ -17,10 +18,11 @@ public class Jeenigma {
     /*
      * 
      */
-    private Rotor rotor1, rotor2, rotor3, workingRotor;
+    private Rotor rotor1, rotor2, rotor3;
     private Reflecteur reflecteur;
     private RootPane rootPane;
     private Conf conf;
+    private int workingRotorNumber;
     /*
      * 
      */
@@ -97,9 +99,11 @@ public class Jeenigma {
             
             encrypted_letter = Tools.getCharByPosition(next_position);
             
+            this.getWorkingRotor().decaleRotor(1, true);
             //a un tour complet de rotor, il faut passer au suivant
-            if(this.workingRotor.afaitUnTour()){
-                this.workingRotor.setCompteDecalage(0);
+            if(this.getWorkingRotor().afaitUnTour()){
+                System.out.println("26eme coup de decalage !");
+                this.getWorkingRotor().setCompteDecalage(0);
                 this.setNextWorkingRotor();
             }
         }
@@ -146,14 +150,14 @@ public class Jeenigma {
     /*
      * 
      */
-    public void setWorkingRotor(Rotor rotor){
-        this.workingRotor = rotor;
+    public void setWorkingRotorNumber(int number){
+        this.workingRotorNumber = number;
     }
     /*
      *
      */
-    public Rotor getWorkingRotor(){
-        return this.workingRotor;
+    public int  getWorkingRotorNumber(){
+        return this.workingRotorNumber;
     }
     /*
      * 
@@ -194,41 +198,71 @@ public class Jeenigma {
     /*
      * 
      */
-    private void initWorkingRotor(){
-        switch(1){
+    public void initWorkingRotor(){
+        int ordreDecalageR1 = this.rotor1.getOrdreDecalage();
+        int ordreDecalageR2 = this.rotor2.getOrdreDecalage();
+        int ordreDecalageR3 = this.rotor3.getOrdreDecalage();
+        
+        Rotor[] ordres = new Rotor[3];
+        ordres[this.rotor1.getOrdreDecalage()-1] = this.rotor1;
+        ordres[this.rotor2.getOrdreDecalage()-1] = this.rotor2;
+        ordres[this.rotor3.getOrdreDecalage()-1] = this.rotor3;
+        
+        this.setWorkingRotorNumber(ordres[0].getRotorNumber());
+    }
+    /*
+     * 
+     */
+    public void setNextWorkingRotor() throws InvalidAttributeValueException{
+        int ordreProchainRotor;
+        switch(this.getWorkingRotorNumber()){
             case 1:
-                this.workingRotor = this.rotor1;
+                ordreProchainRotor = (this.rotor1.getOrdreDecalage() % 3) + 1;
             break;
+                
             case 2:
-                this.workingRotor = this.rotor2;
+                ordreProchainRotor = (this.rotor2.getOrdreDecalage() % 3) + 1;
             break;
+                
             case 3:
-                this.workingRotor = this.rotor3;
+                ordreProchainRotor = (this.rotor3.getOrdreDecalage() % 3) + 1;
             break;
+                
+            default:
+                ordreProchainRotor = 1;
+            break;
+        }
+        if(ordreProchainRotor == this.rotor1.getOrdreDecalage()){
+            this.setWorkingRotorNumber(1);
+        }else if( ordreProchainRotor == this.rotor2.getOrdreDecalage()){
+            this.setWorkingRotorNumber(2);
+        }else if( ordreProchainRotor == this.rotor3.getOrdreDecalage()){
+            this.setWorkingRotorNumber(3);
         }
     }
     /*
      * 
      */
-    public void setNextWorkingRotor() throws Exception{
-        if(1 == -1){
-            throw new Exception("Impossible de déterminer le rotor suivant");
-        }
-        
-        int nextRotorNumber = 1;
-        
-        switch(nextRotorNumber){
+    public Rotor getWorkingRotor(){
+        Rotor workingRotor;
+        switch(this.getWorkingRotorNumber()){
             case 1:
-                this.setWorkingRotor(rotor1);
+                workingRotor = this.rotor1;
             break;
+            
             case 2:
-                this.setWorkingRotor(rotor2);
+                workingRotor = this.rotor2;
             break;
-            case 3:
-                this.setWorkingRotor(rotor3);
                 
+            case 3:
+                workingRotor = this.rotor3;
+            break;
+            
+            default:
+                workingRotor = this.rotor1;
             break;
         }
+        return workingRotor;
     }
     /*
      * 

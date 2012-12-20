@@ -30,17 +30,13 @@ public class EncryptListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
-            //encryption chaine
             String words;
             words = parent.getRootPane().getDecryptBox().getDecryptText().getText();
-            
             if(words.equals("")){
                 throw new Exception("le texte a encrypter est vide !");
             }
             words = parent.encrypt(words);
             parent.getRootPane().getEncryptBox().getEncrypText().setText(words);
-            
-            //decalage du rotor
         }catch(Exception ex){
             JOptionPane.showMessageDialog(this.parent.getRootPane(), ex.getMessage(), "erreur", JOptionPane.ERROR_MESSAGE);
         }
