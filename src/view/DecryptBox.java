@@ -14,7 +14,11 @@ import javax.swing.JTextArea;
  * @author jee
  */
 public class DecryptBox extends JPanel{
-    /*
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/*
      * 
      */
     private JTextArea decrypt_text;

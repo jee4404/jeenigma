@@ -13,7 +13,11 @@ import listener.*;
  * @author jee
  */
 public class ActionBox extends JPanel{
-    /*
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/*
      * 
      */
     private JButton encrypter, next_step, decrypter, configurer;

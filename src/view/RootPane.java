@@ -15,7 +15,11 @@ import javax.swing.JTable;
  * @author jee
  */
 public class RootPane extends JFrame{
-    private JTable tableR1, tableR2, tableR3;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTable tableR1, tableR2, tableR3;
     private ConfBox confbox;
     private ActionBox actionbox;
     private DecryptBox decryptbox;

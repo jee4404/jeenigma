@@ -5,7 +5,6 @@
 package view;
 
 import conf.Conf;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -15,7 +14,11 @@ import javax.swing.JTextArea;
  * @author jee
  */
 public class EncryptBox extends JPanel{
-    /*
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/*
      * 
      */
     private JTextArea encrypt_text;

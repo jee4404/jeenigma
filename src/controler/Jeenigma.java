@@ -198,10 +198,6 @@ public class Jeenigma {
      * 
      */
     public void initWorkingRotor(){
-        int ordreDecalageR1 = this.rotor1.getOrdreDecalage();
-        int ordreDecalageR2 = this.rotor2.getOrdreDecalage();
-        int ordreDecalageR3 = this.rotor3.getOrdreDecalage();
-        
         Rotor[] ordres = new Rotor[3];
         ordres[this.rotor1.getOrdreDecalage()-1] = this.rotor1;
         ordres[this.rotor2.getOrdreDecalage()-1] = this.rotor2;
@@ -271,7 +267,7 @@ public class Jeenigma {
             SwingUtilities.invokeLater(new Runnable(){
                 @Override
                 public void run(){
-                    Jeenigma enigma = new Jeenigma();
+                    new Jeenigma();
                 }
             });
         }

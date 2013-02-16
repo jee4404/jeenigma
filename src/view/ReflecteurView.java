@@ -10,7 +10,11 @@ import javax.swing.table.AbstractTableModel;
  * @author jee
  */
 public class ReflecteurView extends AbstractTableModel{
-    private Object[][] data;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Object[][] data;
     private RootPane parent;
     /*
     * 

@@ -11,7 +11,11 @@ import javax.swing.JPanel;
  * @author jee
  */
 public class ConfBox extends JPanel{
-    /*
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/*
      * 
      */
     private ConfBoxRotor confRotor1, confRotor2, confRotor3;

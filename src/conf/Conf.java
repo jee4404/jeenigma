@@ -5,7 +5,6 @@
 package conf;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -24,7 +23,10 @@ public class Conf {
     public static final int[] rotor3Sortie = {12, -1, 23, 10, 2, 14, 5, -5, 9, -2, -13, 10, -2, -8, 10, -6, 6, -16, 2, -1, -17, -5, -14, -9, -20, -10};
     public static final int[] reflecteur = {25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5, 3, 1, -1, -3, -5, -7, -9, -11, -13, -15, -17, -19, -21, -23, -25};
     
-    public static final Map alphabet = new HashMap(){{
+    public static final HashMap<Object, Object> alphabet = new HashMap<Object, Object>(){
+		private static final long serialVersionUID = 3395737653432730688L;
+
+	{
         put('A',0);
         put('B',1);
         put('C',2);
