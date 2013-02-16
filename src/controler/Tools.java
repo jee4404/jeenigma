@@ -56,7 +56,7 @@ public class Tools {
             throw new Exception("la lettre à encrypter n'est pas disponible dans notre alphabet");
         }
         
-        position = (int) Conf.alphabet.get(letter);
+        position = (Integer) Conf.alphabet.get(letter);
         return position;
     }
     /*

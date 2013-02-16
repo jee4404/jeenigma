@@ -60,18 +60,18 @@ public class ConfBoxRotor extends JPanel{
      * 
      */
     public int getDecalageInitial(){
-        return (int)this.decalageInitial.getSelectedItem();
+        return (Integer)this.decalageInitial.getSelectedItem();
     }
     /*
      * 
      */
     public int getOrdreDecalage(){
-        return (int)this.ordreDecalage.getSelectedItem();
+        return (Integer)this.ordreDecalage.getSelectedItem();
     }
     /*
      * 
      */
     public char getSensDecalage(){
-        return (char)this.sensDecalage.getSelectedItem();
+        return (Character)this.sensDecalage.getSelectedItem();
     }
 }
